@@ -1,0 +1,167 @@
+<html>
+	
+	<head>
+		
+		<style>
+			
+			p {
+				
+				transition: all 0.5s
+				
+			}
+			
+			.darkmode {
+				
+				color: white; 
+				background: black;
+				
+			}
+			
+			.lightmode {
+				
+				color: black;
+				background: white;
+				
+			}
+			
+			.highlight {
+				
+				border: 1px solid red;
+				background: greenyellow;
+				
+			}
+			
+			.visualimpairmode {
+				
+				color: cyan;
+				background: darkslateblue;
+				font-size: 1.5em;
+				
+			}
+			
+			.hideme {
+				
+				display: none;
+				
+			}
+			
+			<!-- The positioning of visualimpairmode below darkmode gives it greater precedence. If their positions were reversed, visualimpairmode would have been overriden by darkmode -->
+			
+		</style>
+		
+	</head>
+	
+	<body>
+		
+		<h1>Main Title</h1>
+			
+		<div>
+				
+			<h2>Chapter 1</h2>
+				
+			<p>
+					
+				Generate
+					
+			</p>
+				
+		</div>
+			
+		<div>
+				
+			<h2>Chapter 2</h2>
+			
+			<p>
+					
+				This
+					
+			</p>
+				
+		</div>
+			
+		<div>
+				
+			<h2>Chapter 3</h2>
+				
+			<p>
+					
+				Crikey!
+					
+			</p>
+				
+		</div>
+		
+			
+		<button id="darkmode" onclick="darkmode()">Toggle Dark Mode</button>
+		<button id="nohighlights" onclick="reset()">Reset Highlights</button>
+		<button id="hicontrastmode" onclick="vim()">Toggle Hi Contrast Mode</button>
+		
+		<script>
+			
+			var site = document.body;
+
+			function darkmode() {
+				
+				site.classList.toggle("darkmode");
+				
+			}
+			
+			var element;
+			
+			document.addEventListener('click', function(e) {
+				
+				if(e.target.tagName == "P") {
+					
+					element = e.target;
+					element.classList.toggle("highlight");
+					
+				}
+				else {
+					
+					element = null;
+					
+				}
+				
+				
+			});
+			
+			function reset() {
+				
+				para = document.getElementsByTagName('p');
+				for(var i = 0; i += 1; i < para.size - 1) {
+					
+					para[i - 1].classList.remove('highlight');
+					
+				}
+				
+			}
+			
+			function vim() {
+				
+				site.classList.toggle("visualimpairmode");
+				
+			}
+			
+			document.addEventListener('click', function(e) {
+				
+				if(e.target.tagName == "H2") {
+					
+					element = e.target;
+					element.nextElementSibling.classList.toggle('hideme');
+					
+				}
+				else {
+					
+					element = null;
+					
+				}
+				
+				
+			});
+			
+			
+		</script>
+		
+	</body>
+	
+</html>
